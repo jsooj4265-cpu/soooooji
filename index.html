@@ -13,9 +13,6 @@
         .rabbit-icon { font-size: 36px; background: rgba(255, 255, 255, 0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
         .header-desc { font-size: 13px; margin-top: 12px; line-height: 1.5; opacity: 0.95; }
         .container { padding: 16px; }
-        .preset-card { background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 14px; }
-        .preset-info .label { font-size: 11px; color: #6C7A89; }
-        .preset-info .val { font-size: 16px; font-weight: bold; color: #2D5A27; margin-top: 2px; }
         .notice-box { background-color: #FFFDF0; border: 1px solid #E6D595; border-radius: 12px; padding: 14px; font-size: 13px; line-height: 1.5; margin-bottom: 16px; color: #5C522B; }
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .info-card { background: white; padding: 14px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
@@ -23,90 +20,115 @@
         .info-card .content { font-size: 13px; font-weight: bold; line-height: 1.3; }
         .section-title { font-size: 18px; font-weight: bold; margin: 24px 0 12px; }
         .wishlist-container { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 20px; }
-        .input-group { display: flex; gap: 8px; margin-bottom: 10px; }
-        .input-group input { flex: 1; padding: 10px 12px; border: 1px solid #DDD; border-radius: 8px; font-size: 13px; outline: none; }
-        .input-group button { background: #2D5A27; color: white; border: none; padding: 0 14px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .input-row { display: flex; gap: 8px; }
+        .input-group input, .input-group select { flex: 1; padding: 10px 12px; border: 1px solid #DDD; border-radius: 8px; font-size: 13px; outline: none; }
+        .add-btn { background: #2D5A27; color: white; border: none; padding: 10px 14px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; }
         .wish-list { list-style: none; }
-        .wish-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #F0F0F0; font-size: 14px; }
+        .wish-item { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid #F0F0F0; font-size: 14px; }
         .wish-item:last-child { border-bottom: none; }
-        .wish-item .left { display: flex; align-items: center; gap: 8px; }
-        .wish-item a { color: #2980B9; text-decoration: none; font-size: 12px; background: #EBF5FB; padding: 2px 6px; border-radius: 4px; }
+        .wish-item-header { display: flex; justify-content: space-between; align-items: center; }
+        .wish-tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .tag-sooji { background: #E8F8F5; color: #117A65; }
+        .tag-eunyeon { background: #FEF9E7; color: #B7950B; }
+        .tag-together { background: #EBF5FB; color: #2E86C1; }
         .del-btn { background: none; border: none; color: #E74C3C; font-size: 14px; cursor: pointer; }
+        .hotel-card { background: white; border-radius: 12px; padding: 14px; margin-bottom: 10px; border: 1px solid #EAEAEA; }
+        .hotel-name { font-size: 15px; font-weight: bold; margin-bottom: 4px; }
+        .hotel-desc { font-size: 12px; color: #6C7A89; }
         .day-timeline { display: flex; flex-direction: column; gap: 12px; }
         .timeline-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; gap: 14px; }
         .time-badge { font-size: 12px; font-weight: bold; color: #2D5A27; background: #E8EFE6; padding: 4px 8px; border-radius: 6px; height: fit-content; white-space: nowrap; }
         .place-info { flex: 1; }
         .place-name { font-size: 15px; font-weight: bold; margin-bottom: 4px; }
         .place-desc { font-size: 12px; color: #6C7A89; line-height: 1.4; margin-bottom: 8px; }
-        .place-map-link { display: inline-block; font-size: 11px; color: #2D5A27; font-weight: bold; text-decoration: none; }
         .tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: white; display: flex; justify-content: space-around; padding: 10px 0 14px; box-shadow: 0 -2px 10px rgba(0,0,0,0.06); z-index: 100; }
         .tab-item { font-size: 12px; font-weight: bold; color: #6C7A89; border: none; background: none; cursor: pointer; padding: 6px 12px; border-radius: 20px; }
         .tab-item.active { background: #2D5A27; color: white; }
-        .floating-btn { position: fixed; bottom: 70px; right: calc(50% - 220px); background: #2D5A27; color: white; border: none; padding: 10px 16px; border-radius: 30px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; z-index: 99; }
-        @media (max-width: 480px) { .floating-btn { right: 16px; } }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <div style="font-size: 13px; opacity: 0.9; margin-bottom: 8px;">받은 여정</div>
+        <div style="font-size: 13px; opacity: 0.9; margin-bottom: 8px;">함께 만드는 여행</div>
         <div class="header-title-container">
             <div class="header-title">수지와 어년의<br>치앙마이 여정 🐘</div>
             <div class="rabbit-icon">🐰</div>
         </div>
         <div class="header-desc">
-            천천히 즐기는 3박 4일 치앙마이 여행. 지도와 일정을 확인하고 함께 계획해 보세요!
+            가고 싶은 장소와 숙소를 함께 리스트업하고 일정을 짜보세요!
         </div>
     </div>
 
     <div class="container">
-        <div class="preset-card">
-            <div class="preset-info">
-                <div class="label">선택된 여정</div>
-                <div class="val">수지와 어년의 치앙마이 여행</div>
-            </div>
-        </div>
-
-        <div class="notice-box">
-            📌 <strong>링크로 공유된 여정입니다.</strong><br>
-            일정과 위시리스트는 기기에 자동 저장되어 자유롭게 수정하실 수 있습니다.
-        </div>
-
         <div class="info-grid">
             <div class="info-card">
                 <div class="title">여행 날짜</div>
                 <div class="content">12/05 (금) ~ 12/08 (월)<br>3박 4일</div>
             </div>
             <div class="info-card">
-                <div class="title">숙소</div>
-                <div class="content">치앙마이 올드시티 / 님만해민</div>
+                <div class="title">출국 (ZE517)</div>
+                <div class="content">17:25 ~ 21:20</div>
             </div>
             <div class="info-card">
-                <div class="title">출국 항공편</div>
-                <div class="content">ICN-CNX<br>17:25 ~ 21:20</div>
+                <div class="title">귀국 (ZE518)</div>
+                <div class="content">22:20 ~ 05:30 (+1)</div>
             </div>
             <div class="info-card">
-                <div class="title">귀국 항공편</div>
-                <div class="content">CNX-ICN<br>22:20 ~ 05:30 (+1)</div>
+                <div class="title">숙소 상태</div>
+                <div class="content">후보 리스트업 진행 중 🏨</div>
             </div>
         </div>
 
-        <!-- WISHLIST SECTION -->
-        <div class="section-title">📍 WISHLIST : 가고 싶은 곳</div>
+        <!-- 각자 가고 싶은 장소 리스트업 섹션 -->
+        <div class="section-title">✨ 우리가 가고 싶은 장소 리스트</div>
         <div class="wishlist-container">
             <div class="input-group">
-                <input type="text" id="placeName" placeholder="장소명 (예: 반캉왓)">
-                <input type="text" id="placeMap" placeholder="구글 지도 링크 URL">
-                <button onclick="addPlace()">추가</button>
+                <div class="input-row">
+                    <input type="text" id="wishName" placeholder="장소명 (예: 반캉왓, 나이트 바자)">
+                    <select id="wishWho">
+                        <option value="수지">수지 희망 🐰</option>
+                        <option value="어년">어년 희망 🐻</option>
+                        <option value="같이">둘 다 희망 ❤️</option>
+                    </select>
+                </div>
+                <div class="input-row">
+                    <select id="wishDay">
+                        <option value="미정">희망 날짜: 미정</option>
+                        <option value="Day 1">Day 1 (12/05 금)</option>
+                        <option value="Day 2">Day 2 (12/06 토)</option>
+                        <option value="Day 3">Day 3 (12/07 일)</option>
+                        <option value="Day 4">Day 4 (12/08 월)</option>
+                    </select>
+                    <input type="text" id="wishMemo" placeholder="메모/이유 (예: 카페 분위기 좋음)">
+                </div>
+                <button class="add-btn" onclick="addWishPlace()">장소 추가하기</button>
             </div>
-            <ul class="wish-list" id="placeList"></ul>
+            <ul class="wish-list" id="placeWishList"></ul>
         </div>
 
-        <div class="section-title">🛍️ WISHLIST : 사야 할 것</div>
+        <!-- 🏨 숙소 후보 리스트업 섹션 -->
+        <div class="section-title">🏨 숙소 후보 메모장</div>
         <div class="wishlist-container">
             <div class="input-group">
-                <input type="text" id="shoppingItem" placeholder="구매할 물품 (예: 야돔, 코끼리 바지)">
-                <button onclick="addShopping()">추가</button>
+                <input type="text" id="hotelName" placeholder="호텔/숙소 이름 (예: 부라사리 에센스)">
+                <div class="input-row">
+                    <input type="text" id="hotelArea" placeholder="위치 (예: 올드시티 / 님만해민)">
+                    <input type="text" id="hotelPrice" placeholder="1박 가격대 또는 메모">
+                </div>
+                <button class="add-btn" onclick="addHotel()">숙소 후보 추가</button>
+            </div>
+            <div id="hotelList"></div>
+        </div>
+
+        <!-- 🛍️ 쇼핑 위시리스트 -->
+        <div class="section-title">🛍️ 위시리스트 : 사야 할 것</div>
+        <div class="wishlist-container">
+            <div class="input-group">
+                <div class="input-row">
+                    <input type="text" id="shoppingItem" placeholder="구매할 물품 (예: 야돔, 코끼리 바지)">
+                    <button class="add-btn" onclick="addShopping()">추가</button>
+                </div>
             </div>
             <ul class="wish-list" id="shoppingList"></ul>
         </div>
@@ -116,12 +138,7 @@
         <div class="day-timeline" id="timelineContent"></div>
     </div>
 
-    <button class="floating-btn" onclick="alert('어년이에게 질문을 남겨보세요! 🐰')">
-        🐰 수지와 어년에게 물어보기
-    </button>
-
     <div class="tab-bar">
-        <button class="tab-item" onclick="switchDay('all', event)">전체 지도</button>
         <button class="tab-item active" onclick="switchDay(1, event)">Day 1</button>
         <button class="tab-item" onclick="switchDay(2, event)">Day 2</button>
         <button class="tab-item" onclick="switchDay(3, event)">Day 3</button>
@@ -131,24 +148,24 @@
     <script>
         const scheduleData = {
             1: [
-                { time: "17:25", name: "인천국제공항 출발", desc: "치앙마이 행 비행기 탑승", map: "" },
-                { time: "21:20", name: "치앙마이 공항 도착", desc: "입국 심사 및 이동", map: "https://maps.google.com" },
-                { time: "22:30", name: "호텔 체크인 & 휴식", desc: "올드시티 근처 숙소 도착 및 짐 풀기", map: "" }
+                { time: "17:25", name: "인천국제공항 출발 (ZE517)", desc: "치앙마이 행 이스타항공 탑승" },
+                { time: "21:20", name: "치앙마이 공항 도착", desc: "입국 심사 및 이동" },
+                { time: "22:30", name: "호텔 체크인", desc: "숙소 도착 및 휴식" }
             ],
             2: [
-                { time: "09:00", name: "올드시티 브런치 & 산책", desc: "타패문 주변 카페 탐방", map: "https://maps.google.com" },
-                { time: "13:00", name: "왓 프라씽 사원", desc: "올드시티 대표 사원 구경", map: "https://maps.google.com" },
-                { time: "17:00", name: "선데이 야시장", desc: "먹거리 및 굿즈 쇼핑", map: "https://maps.google.com" }
+                { time: "09:00", name: "올드시티 브런치 & 산책", desc: "타패문 주변 탐방" },
+                { time: "13:00", name: "왓 프라씽 사원", desc: "대표 사원 구경" },
+                { time: "17:00", name: "선데이 야시장", desc: "먹거리 및 쇼핑" }
             ],
             3: [
-                { time: "10:00", name: "반캉왓 예술마을", desc: "숲속 아기자기한 공방 거리 산책", map: "https://maps.google.com" },
-                { time: "14:00", name: "님만해민 원님만", desc: "쇼핑몰 구경 및 디저트 먹기", map: "https://maps.google.com" },
-                { time: "18:00", name: "마야 몰 야경 & 저녁식사", desc: "루프탑 및 나이트 마켓", map: "https://maps.google.com" }
+                { time: "10:00", name: "반캉왓 예술마을", desc: "공방 거리 산책" },
+                { time: "14:00", name: "님만해민 원님만", desc: "쇼핑몰 구경" },
+                { time: "18:00", name: "마야 몰 야경", desc: "루프탑 및 저녁식사" }
             ],
             4: [
-                { time: "11:00", name: "체크아웃 & 짐 보관", desc: "마지막 스파 및 마사지", map: "" },
-                { time: "15:00", name: "도이수텝 사원", desc: "치앙마이 전경 감상", map: "https://maps.google.com" },
-                { time: "19:00", name: "공항 이동 & 귀국 준비", desc: "CNX 22:20 출발 비행기 탑승", map: "" }
+                { time: "11:00", name: "체크아웃 & 짐 보관", desc: "마사지 및 산책" },
+                { time: "15:00", name: "도이수텝 사원", desc: "전경 감상" },
+                { time: "22:20", name: "치앙마이 출발 (ZE518)", desc: "인천 행 탑승" }
             ]
         };
 
@@ -156,13 +173,6 @@
             const container = document.getElementById('timelineContent');
             const title = document.getElementById('dayTitle');
             container.innerHTML = '';
-
-            if (day === 'all') {
-                title.innerText = "🗺️ 전체 일정 한눈에 보기";
-                container.innerHTML = "<div style='background:white; padding:16px; border-radius:12px; font-size:13px;'>전체 구글 맵 레이아웃 연동 구역입니다.</div>";
-                return;
-            }
-
             title.innerText = `🗓️ Day ${day} 일정`;
             const list = scheduleData[day] || [];
             list.forEach(item => {
@@ -172,7 +182,6 @@
                         <div class="place-info">
                             <div class="place-name">${item.name}</div>
                             <div class="place-desc">${item.desc}</div>
-                            ${item.map ? `<a href="${item.map}" target="_blank" class="place-map-link">📍 구글 지도 보기 ➔</a>` : ''}
                         </div>
                     </div>
                 `;
@@ -185,28 +194,56 @@
             renderTimeline(day);
         }
 
-        let places = JSON.parse(localStorage.getItem('wish_places') || '[]');
+        let wishPlaces = JSON.parse(localStorage.getItem('wish_places_v2') || '[]');
+        let hotels = JSON.parse(localStorage.getItem('wish_hotels') || '[]');
         let shoppings = JSON.parse(localStorage.getItem('wish_shoppings') || '[]');
 
         function saveAndRender() {
-            localStorage.setItem('wish_places', JSON.stringify(places));
+            localStorage.setItem('wish_places_v2', JSON.stringify(wishPlaces));
+            localStorage.setItem('wish_hotels', JSON.stringify(hotels));
             localStorage.setItem('wish_shoppings', JSON.stringify(shoppings));
 
-            const pList = document.getElementById('placeList');
-            pList.innerHTML = places.map((p, i) => `
-                <li class="wish-item">
-                    <div class="left">
-                        <span>📍 ${p.name}</span>
-                        ${p.map ? `<a href="${p.map}" target="_blank">지도</a>` : ''}
+            // 가고 싶은 장소 렌더링
+            const pList = document.getElementById('placeWishList');
+            pList.innerHTML = wishPlaces.map((p, i) => {
+                let tagClass = p.who === '수지' ? 'tag-sooji' : (p.who === '어년' ? 'tag-eunyeon' : 'tag-together');
+                return `
+                    <li class="wish-item">
+                        <div class="wish-item-header">
+                            <div>
+                                <span class="wish-tag ${tagClass}">${p.who}</span>
+                                <strong style="margin-left:4px;">${p.name}</strong>
+                            </div>
+                            <button class="del-btn" onclick="deleteWishPlace(${i})">✕</button>
+                        </div>
+                        <div style="font-size:12px; color:#6C7A89; display:flex; gap:8px; margin-top:2px;">
+                            <span>🗓️ ${p.day}</span>
+                            ${p.memo ? `<span>💬 ${p.memo}</span>` : ''}
+                        </div>
+                    </li>
+                `;
+            }).join('');
+
+            // 숙소 후보 렌더링
+            const hList = document.getElementById('hotelList');
+            hList.innerHTML = hotels.map((h, i) => `
+                <div class="hotel-card">
+                    <div class="wish-item-header">
+                        <div class="hotel-name">🏨 ${h.name}</div>
+                        <button class="del-btn" onclick="deleteHotel(${i})">✕</button>
                     </div>
-                    <button class="del-btn" onclick="deletePlace(${i})">✕</button>
-                </li>
+                    <div class="hotel-desc">
+                        ${h.area ? `<span>📍 ${h.area}</span> ` : ''}
+                        ${h.price ? `<span>| 💰 ${h.price}</span>` : ''}
+                    </div>
+                </div>
             `).join('');
 
+            // 쇼핑 렌더링
             const sList = document.getElementById('shoppingList');
             sList.innerHTML = shoppings.map((s, i) => `
-                <li class="wish-item">
-                    <div class="left">
+                <li class="wish-item" style="flex-direction:row; justify-content:space-between; align-items:center;">
+                    <div>
                         <input type="checkbox" ${s.done ? 'checked' : ''} onchange="toggleShopping(${i})">
                         <span style="${s.done ? 'text-decoration:line-through; color:#AAA;' : ''}">${s.name}</span>
                     </div>
@@ -215,18 +252,33 @@
             `).join('');
         }
 
-        function addPlace() {
-            const name = document.getElementById('placeName').value;
-            const map = document.getElementById('placeMap').value;
+        function addWishPlace() {
+            const name = document.getElementById('wishName').value;
+            const who = document.getElementById('wishWho').value;
+            const day = document.getElementById('wishDay').value;
+            const memo = document.getElementById('wishMemo').value;
             if(name) {
-                places.push({ name, map });
-                document.getElementById('placeName').value = '';
-                document.getElementById('placeMap').value = '';
+                wishPlaces.push({ name, who, day, memo });
+                document.getElementById('wishName').value = '';
+                document.getElementById('wishMemo').value = '';
                 saveAndRender();
             }
         }
+        function deleteWishPlace(i) { wishPlaces.splice(i, 1); saveAndRender(); }
 
-        function deletePlace(i) { places.splice(i, 1); saveAndRender(); }
+        function addHotel() {
+            const name = document.getElementById('hotelName').value;
+            const area = document.getElementById('hotelArea').value;
+            const price = document.getElementById('hotelPrice').value;
+            if(name) {
+                hotels.push({ name, area, price });
+                document.getElementById('hotelName').value = '';
+                document.getElementById('hotelArea').value = '';
+                document.getElementById('hotelPrice').value = '';
+                saveAndRender();
+            }
+        }
+        function deleteHotel(i) { hotels.splice(i, 1); saveAndRender(); }
 
         function addShopping() {
             const name = document.getElementById('shoppingItem').value;
@@ -236,7 +288,6 @@
                 saveAndRender();
             }
         }
-
         function toggleShopping(i) { shoppings[i].done = !shoppings[i].done; saveAndRender(); }
         function deleteShopping(i) { shoppings.splice(i, 1); saveAndRender(); }
 
