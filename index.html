@@ -5,203 +5,243 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수지와 어년의 치앙마이 여정 🐘</title>
     <style>
-        :root {
-            --bg-color: #F4F6F0;
-            --main-green: #2D5A27;
-            --light-green: #E8EFE6;
-            --accent-gold: #D4AF37;
-            --card-bg: #FFFFFF;
-            --text-main: #2C3E50;
-            --text-sub: #6C7A89;
-            --notice-bg: #FFFDF0;
-            --notice-border: #E6D595;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #F4F6F0; color: #2C3E50; max-width: 480px; margin: 0 auto; padding-bottom: 90px; }
+        .header { background-color: #2D5A27; color: white; padding: 24px 20px 20px; border-radius: 0 0 20px 20px; }
+        .header-title-container { display: flex; justify-content: space-between; align-items: center; }
+        .header-title { font-size: 24px; font-weight: bold; }
+        .rabbit-icon { font-size: 36px; background: rgba(255, 255, 255, 0.2); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .header-desc { font-size: 13px; margin-top: 12px; line-height: 1.5; opacity: 0.95; }
+        .container { padding: 16px; }
+        .preset-card { background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 14px; }
+        .preset-info .label { font-size: 11px; color: #6C7A89; }
+        .preset-info .val { font-size: 16px; font-weight: bold; color: #2D5A27; margin-top: 2px; }
+        .notice-box { background-color: #FFFDF0; border: 1px solid #E6D595; border-radius: 12px; padding: 14px; font-size: 13px; line-height: 1.5; margin-bottom: 16px; color: #5C522B; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .info-card { background: white; padding: 14px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+        .info-card .title { font-size: 11px; color: #6C7A89; margin-bottom: 6px; }
+        .info-card .content { font-size: 13px; font-weight: bold; line-height: 1.3; }
+        .section-title { font-size: 18px; font-weight: bold; margin: 24px 0 12px; }
+        .wishlist-container { background: white; border-radius: 16px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-bottom: 20px; }
+        .input-group { display: flex; gap: 8px; margin-bottom: 10px; }
+        .input-group input { flex: 1; padding: 10px 12px; border: 1px solid #DDD; border-radius: 8px; font-size: 13px; outline: none; }
+        .input-group button { background: #2D5A27; color: white; border: none; padding: 0 14px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; }
+        .wish-list { list-style: none; }
+        .wish-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #F0F0F0; font-size: 14px; }
+        .wish-item:last-child { border-bottom: none; }
+        .wish-item .left { display: flex; align-items: center; gap: 8px; }
+        .wish-item a { color: #2980B9; text-decoration: none; font-size: 12px; background: #EBF5FB; padding: 2px 6px; border-radius: 4px; }
+        .del-btn { background: none; border: none; color: #E74C3C; font-size: 14px; cursor: pointer; }
+        .day-timeline { display: flex; flex-direction: column; gap: 12px; }
+        .timeline-card { background: white; border-radius: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); display: flex; gap: 14px; }
+        .time-badge { font-size: 12px; font-weight: bold; color: #2D5A27; background: #E8EFE6; padding: 4px 8px; border-radius: 6px; height: fit-content; white-space: nowrap; }
+        .place-info { flex: 1; }
+        .place-name { font-size: 15px; font-weight: bold; margin-bottom: 4px; }
+        .place-desc { font-size: 12px; color: #6C7A89; line-height: 1.4; margin-bottom: 8px; }
+        .place-map-link { display: inline-block; font-size: 11px; color: #2D5A27; font-weight: bold; text-decoration: none; }
+        .tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: white; display: flex; justify-content: space-around; padding: 10px 0 14px; box-shadow: 0 -2px 10px rgba(0,0,0,0.06); z-index: 100; }
+        .tab-item { font-size: 12px; font-weight: bold; color: #6C7A89; border: none; background: none; cursor: pointer; padding: 6px 12px; border-radius: 20px; }
+        .tab-item.active { background: #2D5A27; color: white; }
+        .floating-btn { position: fixed; bottom: 70px; right: calc(50% - 220px); background: #2D5A27; color: white; border: none; padding: 10px 16px; border-radius: 30px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; z-index: 99; }
+        @media (max-width: 480px) { .floating-btn { right: 16px; } }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div style="font-size: 13px; opacity: 0.9; margin-bottom: 8px;">받은 여정</div>
+        <div class="header-title-container">
+            <div class="header-title">수지와 어년의<br>치앙마이 여정 🐘</div>
+            <div class="rabbit-icon">🐰</div>
+        </div>
+        <div class="header-desc">
+            천천히 즐기는 3박 4일 치앙마이 여행. 지도와 일정을 확인하고 함께 계획해 보세요!
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="preset-card">
+            <div class="preset-info">
+                <div class="label">선택된 여정</div>
+                <div class="val">수지와 어년의 치앙마이 여행</div>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            📌 <strong>링크로 공유된 여정입니다.</strong><br>
+            일정과 위시리스트는 기기에 자동 저장되어 자유롭게 수정하실 수 있습니다.
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="title">여행 날짜</div>
+                <div class="content">12/05 (금) ~ 12/08 (월)<br>3박 4일</div>
+            </div>
+            <div class="info-card">
+                <div class="title">숙소</div>
+                <div class="content">치앙마이 올드시티 / 님만해민</div>
+            </div>
+            <div class="info-card">
+                <div class="title">출국 항공편</div>
+                <div class="content">ICN-CNX<br>17:25 ~ 21:20</div>
+            </div>
+            <div class="info-card">
+                <div class="title">귀국 항공편</div>
+                <div class="content">CNX-ICN<br>22:20 ~ 05:30 (+1)</div>
+            </div>
+        </div>
+
+        <!-- WISHLIST SECTION -->
+        <div class="section-title">📍 WISHLIST : 가고 싶은 곳</div>
+        <div class="wishlist-container">
+            <div class="input-group">
+                <input type="text" id="placeName" placeholder="장소명 (예: 반캉왓)">
+                <input type="text" id="placeMap" placeholder="구글 지도 링크 URL">
+                <button onclick="addPlace()">추가</button>
+            </div>
+            <ul class="wish-list" id="placeList"></ul>
+        </div>
+
+        <div class="section-title">🛍️ WISHLIST : 사야 할 것</div>
+        <div class="wishlist-container">
+            <div class="input-group">
+                <input type="text" id="shoppingItem" placeholder="구매할 물품 (예: 야돔, 코끼리 바지)">
+                <button onclick="addShopping()">추가</button>
+            </div>
+            <ul class="wish-list" id="shoppingList"></ul>
+        </div>
+
+        <!-- DAY TIMELINE SECTION -->
+        <div class="section-title" id="dayTitle">🗓️ Day 1 일정</div>
+        <div class="day-timeline" id="timelineContent"></div>
+    </div>
+
+    <button class="floating-btn" onclick="alert('어년이에게 질문을 남겨보세요! 🐰')">
+        🐰 수지와 어년에게 물어보기
+    </button>
+
+    <div class="tab-bar">
+        <button class="tab-item" onclick="switchDay('all', event)">전체 지도</button>
+        <button class="tab-item active" onclick="switchDay(1, event)">Day 1</button>
+        <button class="tab-item" onclick="switchDay(2, event)">Day 2</button>
+        <button class="tab-item" onclick="switchDay(3, event)">Day 3</button>
+        <button class="tab-item" onclick="switchDay(4, event)">Day 4</button>
+    </div>
+
+    <script>
+        const scheduleData = {
+            1: [
+                { time: "17:25", name: "인천국제공항 출발", desc: "치앙마이 행 비행기 탑승", map: "" },
+                { time: "21:20", name: "치앙마이 공항 도착", desc: "입국 심사 및 이동", map: "https://maps.google.com" },
+                { time: "22:30", name: "호텔 체크인 & 휴식", desc: "올드시티 근처 숙소 도착 및 짐 풀기", map: "" }
+            ],
+            2: [
+                { time: "09:00", name: "올드시티 브런치 & 산책", desc: "타패문 주변 카페 탐방", map: "https://maps.google.com" },
+                { time: "13:00", name: "왓 프라씽 사원", desc: "올드시티 대표 사원 구경", map: "https://maps.google.com" },
+                { time: "17:00", name: "선데이 야시장", desc: "먹거리 및 굿즈 쇼핑", map: "https://maps.google.com" }
+            ],
+            3: [
+                { time: "10:00", name: "반캉왓 예술마을", desc: "숲속 아기자기한 공방 거리 산책", map: "https://maps.google.com" },
+                { time: "14:00", name: "님만해민 원님만", desc: "쇼핑몰 구경 및 디저트 먹기", map: "https://maps.google.com" },
+                { time: "18:00", name: "마야 몰 야경 & 저녁식사", desc: "루프탑 및 나이트 마켓", map: "https://maps.google.com" }
+            ],
+            4: [
+                { time: "11:00", name: "체크아웃 & 짐 보관", desc: "마지막 스파 및 마사지", map: "" },
+                { time: "15:00", name: "도이수텝 사원", desc: "치앙마이 전경 감상", map: "https://maps.google.com" },
+                { time: "19:00", name: "공항 이동 & 귀국 준비", desc: "CNX 22:20 출발 비행기 탑승", map: "" }
+            ]
+        };
+
+        function renderTimeline(day) {
+            const container = document.getElementById('timelineContent');
+            const title = document.getElementById('dayTitle');
+            container.innerHTML = '';
+
+            if (day === 'all') {
+                title.innerText = "🗺️ 전체 일정 한눈에 보기";
+                container.innerHTML = "<div style='background:white; padding:16px; border-radius:12px; font-size:13px;'>전체 구글 맵 레이아웃 연동 구역입니다.</div>";
+                return;
+            }
+
+            title.innerText = `🗓️ Day ${day} 일정`;
+            const list = scheduleData[day] || [];
+            list.forEach(item => {
+                container.innerHTML += `
+                    <div class="timeline-card">
+                        <div class="time-badge">${item.time}</div>
+                        <div class="place-info">
+                            <div class="place-name">${item.name}</div>
+                            <div class="place-desc">${item.desc}</div>
+                            ${item.map ? `<a href="${item.map}" target="_blank" class="place-map-link">📍 구글 지도 보기 ➔</a>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        function switchDay(day, e) {
+            document.querySelectorAll('.tab-item').forEach(btn => btn.classList.remove('active'));
+            if(e && e.target) e.target.classList.add('active');
+            renderTimeline(day);
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            max-width: 480px;
-            margin: 0 auto;
-            padding-bottom: 90px;
-            min-height: 100vh;
+        let places = JSON.parse(localStorage.getItem('wish_places') || '[]');
+        let shoppings = JSON.parse(localStorage.getItem('wish_shoppings') || '[]');
+
+        function saveAndRender() {
+            localStorage.setItem('wish_places', JSON.stringify(places));
+            localStorage.setItem('wish_shoppings', JSON.stringify(shoppings));
+
+            const pList = document.getElementById('placeList');
+            pList.innerHTML = places.map((p, i) => `
+                <li class="wish-item">
+                    <div class="left">
+                        <span>📍 ${p.name}</span>
+                        ${p.map ? `<a href="${p.map}" target="_blank">지도</a>` : ''}
+                    </div>
+                    <button class="del-btn" onclick="deletePlace(${i})">✕</button>
+                </li>
+            `).join('');
+
+            const sList = document.getElementById('shoppingList');
+            sList.innerHTML = shoppings.map((s, i) => `
+                <li class="wish-item">
+                    <div class="left">
+                        <input type="checkbox" ${s.done ? 'checked' : ''} onchange="toggleShopping(${i})">
+                        <span style="${s.done ? 'text-decoration:line-through; color:#AAA;' : ''}">${s.name}</span>
+                    </div>
+                    <button class="del-btn" onclick="deleteShopping(${i})">✕</button>
+                </li>
+            `).join('');
         }
 
-        .header {
-            background-color: var(--main-green);
-            color: white;
-            padding: 24px 20px 20px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            position: relative;
+        function addPlace() {
+            const name = document.getElementById('placeName').value;
+            const map = document.getElementById('placeMap').value;
+            if(name) {
+                places.push({ name, map });
+                document.getElementById('placeName').value = '';
+                document.getElementById('placeMap').value = '';
+                saveAndRender();
+            }
         }
 
-        .header-top {
-            font-size: 13px;
-            opacity: 0.9;
-            margin-bottom: 8px;
+        function deletePlace(i) { places.splice(i, 1); saveAndRender(); }
+
+        function addShopping() {
+            const name = document.getElementById('shoppingItem').value;
+            if(name) {
+                shoppings.push({ name, done: false });
+                document.getElementById('shoppingItem').value = '';
+                saveAndRender();
+            }
         }
 
-        .header-title-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        function toggleShopping(i) { shoppings[i].done = !shoppings[i].done; saveAndRender(); }
+        function deleteShopping(i) { shoppings.splice(i, 1); saveAndRender(); }
 
-        .header-title {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .rabbit-icon {
-            font-size: 36px;
-            background: rgba(255, 255, 255, 0.2);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .header-desc {
-            font-size: 13px;
-            margin-top: 12px;
-            line-height: 1.5;
-            opacity: 0.95;
-        }
-
-        .container {
-            padding: 16px;
-        }
-
-        .preset-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            margin-bottom: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .preset-info .label {
-            font-size: 11px;
-            color: var(--text-sub);
-        }
-
-        .preset-info .val {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--main-green);
-            margin-top: 2px;
-        }
-
-        .notice-box {
-            background-color: var(--notice-bg);
-            border: 1px solid var(--notice-border);
-            border-radius: 12px;
-            padding: 14px;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 16px;
-            color: #5C522B;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .info-card {
-            background: var(--card-bg);
-            padding: 14px;
-            border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-        }
-
-        .info-card .title {
-            font-size: 11px;
-            color: var(--text-sub);
-            margin-bottom: 6px;
-        }
-
-        .info-card .content {
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin: 24px 0 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .wishlist-container {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            margin-bottom: 20px;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .input-group input {
-            flex: 1;
-            padding: 10px 12px;
-            border: 1px solid #DDD;
-            border-radius: 8px;
-            font-size: 13px;
-            outline: none;
-        }
-
-        .input-group button {
-            background: var(--main-green);
-            color: white;
-            border: none;
-            padding: 0 14px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-        }
-
-        .wish-list {
-            list-style: none;
-        }
-
-        .wish-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #F0F0F0;
-            font-size: 14px;
-        }
-
-        .wish-item:last-child {
-            border-bottom: none;
-        }
-
-        .wish-item .left {
-            display: flex;
-            align-
+        renderTimeline(1);
+        saveAndRender();
+    </script>
+</body>
+</html>
