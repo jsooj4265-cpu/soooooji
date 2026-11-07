@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수지와 어년의 치앙마이 여정 🐘</title>
+    <style>
+        :root {
+            --bg-color: #F4F6F0;
+            --main-green: #2D5A27;
+            --light-green: #E8EFE6;
+            --accent-gold: #D4AF37;
+            --card-bg: #FFFFFF;
+            --text-main: #2C3E50;
+            --text-sub: #6C7A89;
+            --notice-bg: #FFFDF0;
+            --notice-border: #E6D595;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            max-width: 480px;
+            margin: 0 auto;
+            padding-bottom: 90px;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: var(--main-green);
+            color: white;
+            padding: 24px 20px 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            position: relative;
+        }
+
+        .header-top {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .header-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .rabbit-icon {
+            font-size: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .header-desc {
+            font-size: 13px;
+            margin-top: 12px;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .preset-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preset-info .label {
+            font-size: 11px;
+            color: var(--text-sub);
+        }
+
+        .preset-info .val {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--main-green);
+            margin-top: 2px;
+        }
+
+        .notice-box {
+            background-color: var(--notice-bg);
+            border: 1px solid var(--notice-border);
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            color: #5C522B;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .info-card .title {
+            font-size: 11px;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .info-card .content {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 24px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .wishlist-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #DDD;
+            border-radius: 8px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .input-group button {
+            background: var(--main-green);
+            color: white;
+            border: none;
+            padding: 0 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .wish-list {
+            list-style: none;
+        }
+
+        .wish-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #F0F0F0;
+            font-size: 14px;
+        }
+
+        .wish-item:last-child {
+            border-bottom: none;
+        }
+
+        .wish-item .left {
+            display: flex;
+            align-
